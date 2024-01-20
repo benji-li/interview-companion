@@ -1,10 +1,24 @@
 {
     "manifest_version": 3,
-    "name": "Hello Extensions of the world",
-    "description": "Base Level Extension",
+    "name": "Interview Companion",
+    "description": "Make your next interview extra breezy",
     "version": "1.0",
     "action": {
-      "default_popup": "main.html",
-      "default_icon": "hello_extensions.png"
-    }
+      "default_icon": "images/hello_extensions.png"
+    },
+    "permissions": ["scripting", "activeTab"],
+
+    "background": {
+      "service_worker": "background.js"
+    },
+    
+    "content_scripts": [
+      {
+        "js": ["scripts/content.js"],
+        "matches": [
+          "https://developer.chrome.com/docs/extensions/*",
+          "https://developer.chrome.com/docs/webstore/*"
+        ]
+      }
+    ]
 }
