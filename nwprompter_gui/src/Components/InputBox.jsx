@@ -18,16 +18,17 @@ export default function InputBox() {
     const handleText = (e) => setText(e.target.value);
 
     return(
-        <div>
+        <div className="ps-3">
             <form className="form" onSubmit={handleSubmit}>
                 <input
                     type="text" 
-                    className="input" 
+                    className="input, form-control" 
                     placeholder="Input text..."
                     value={text}
                     onChange={handleText}
+                    style={{width: "50%", justifyContent: "left"}}
                 />
-                <input type="submit" value="Submit" />
+                <input className="btn btn-primary" type="submit" value="Submit" />
             </form>
             <div>{response ? response.text : ""}</div>
         </div>
