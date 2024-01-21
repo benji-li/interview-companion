@@ -10,7 +10,7 @@ const chatRouter = require('./routes/chat');
 const app = express();
 
 const cors_options = {
-  origin: ['https://meet.google.com','localhost:8000/chat'],
+  origin: ['https://meet.google.com','http://localhost:8000/chat', 'http://localhost:3000'],
   optionsSuccessStatus: 200
 }
 
