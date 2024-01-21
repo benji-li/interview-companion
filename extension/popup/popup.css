@@ -45,14 +45,7 @@
     width: 24px;
     height: 24px;
   }
-  
-  .modal-box .divider {
-    position: relative;
-    align-self: stretch;
-    width: 100%;
-    height: 1px;
-    object-fit: cover;
-  }
+
   
   .modal-box .main-content {
     display: flex;
@@ -157,17 +150,17 @@
   .modal-box .div-wrapper {
     all: unset;
     box-sizing: border-box;
-    display: inline-flex;
+    display: flex; /* Use flexbox layout */
     height: 42px;
-    align-items: center;
-    justify-content: center;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
     gap: 6px;
-    padding: 8px 16px;
+    padding: 8px 20px;
     position: relative;
     flex: 0 0 auto;
     background-color: #1e81b8;
     border-radius: 42px;
-  }
+}
   
   .modal-box .button-3 {
     all: unset;
@@ -176,12 +169,10 @@
     width: fit-content;
     font-family: "Open Sans-SemiBold", Helvetica;
     font-weight: 600;
-    color: #ffffff;
+    color: #000000;
     font-size: 15px;
     letter-spacing: 0;
     line-height: normal;
-  }
-  
-  .unsplash {
-    background-image: url("img/unsplash-5ziaatxttok.png")
+        margin: auto; /* Center the element */
+
   }

@@ -4,10 +4,11 @@
     "description": "Make your next interview extra breezy",
     "version": "1.0",
     "action": {
+      "default_popup": "home/home.html",
       "default_icon": "img/hello_extensions.png"
     },
     
-    "permissions": ["scripting", "activeTab","storage"],
+    "permissions": ["scripting", "activeTab","storage","tabs"],
 
     "background": {
       "service_worker": "background.js"
@@ -18,8 +19,10 @@
         "js": ["scripts/content.js"],
         "matches": [
           "https://meet.google.com/*",
-          "https://zoom.us/*"
-        ]
+          "https://zoom.us/*",
+          "https://myinstants.com/*"
+        ],
+        "run_at": "document_end"
       }
     ],
 
