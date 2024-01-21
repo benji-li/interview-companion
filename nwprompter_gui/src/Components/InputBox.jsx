@@ -2,20 +2,20 @@ import React, { useState } from "react";
 import axios from "axios";
 
 export default function InputBox() {
-    const [prompt, setPrompt] = useState("");
+    const [text, setText] = useState("");
     const [response, setResponse] = useState("");
     const HTTP = "http://localhost:8000/chat";
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post(`${HTTP}`, { prompt })
+        axios.post(`${HTTP}`, { text })
             .then((res) => setResponse(res.data))
             .catch((error) => {
                 console.log(error);
             });
     };
 
-    const handlePrompt = (e) => setPrompt(e.target.value);
+    const handleText = (e) => setText(e.target.value);
 
     return(
         <div>
@@ -24,12 +24,12 @@ export default function InputBox() {
                     type="text" 
                     className="input" 
                     placeholder="Input text..."
-                    value={prompt}
-                    onChange={handlePrompt}
+                    value={text}
+                    onChange={handleText}
                 />
                 <input type="submit" value="Submit" />
             </form>
-            <div>{response ? response : ""}</div>
+            <div>{response ? response.text : ""}</div>
         </div>
     
     );
