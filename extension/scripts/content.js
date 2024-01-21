@@ -47,7 +47,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
         el.addEventListener("click", (event) => {
             console.log(event.target.checked);
-            chrome.runtime.sendMessage({action: "openNewTab", url: "https://localhost:3000/"});
+            chrome.runtime.sendMessage({action: "openNewTab", url: "http://localhost:3000/"});
         })
 
         const grab = document.createElement("input")
