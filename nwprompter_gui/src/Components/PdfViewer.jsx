@@ -75,7 +75,7 @@ export default function PdfViewer() {
                 {/* <button type="submit" className="btn btn-info" onClick={handleUpload}>Submit PDF to Engine</button> */}
             </form>
             <br/>
-            <h3>View PDF</h3>
+            <h3>Review PDF</h3>
             <div className="pdf-container">
                 <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
                     {view && <>
