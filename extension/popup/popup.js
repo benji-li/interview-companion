@@ -2,6 +2,9 @@ document.addEventListener('DOMContentLoaded', function(){
     document.getElementById("grab").addEventListener("click", function() {
         executeGrab();
     });
+    document.getElementById("redirect").addEventListener("click", function() {
+        chrome.tabs.create({ url: "https://localhost:3000/" });
+    });
 });
 
 function executeGrab() {

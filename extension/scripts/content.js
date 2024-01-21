@@ -32,6 +32,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         if (element) {
             const clientBody = document.getElementById('bodyText');
             if (clientBody) {
+                const title = document.getElementById('title');
+                title.innerHTML = "🤔 Interview Buddy";
                 //clientBody.innerHTML += "<br><strong>"+element.textContent+"</strong>";
                 //clientBody.scrollTop = clientBody.scrollHeight;
 
@@ -52,6 +54,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                     console.log("Request", data.text)
                     clientBody.innerHTML += "<br><br><strong>"+data.text+"</strong>";
                     clientBody.scrollTop = clientBody.scrollHeight;
+                    title.innerHTML = "🤓 Interview Buddy";
                 })
                 .catch((error) => {
                     console.error('Error:', error);
