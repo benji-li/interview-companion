@@ -5,10 +5,16 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
 const indexRouter = require('./routes/index');
 const chatRouter = require('./routes/chat');
 const app = express();
+
+const cors_options = {
+  origin: ['https://meet.google.com','localhost:8000/chat'],
+  optionsSuccessStatus: 200
+}
+
+app.use(cors(cors_options));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -16,7 +22,6 @@ app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

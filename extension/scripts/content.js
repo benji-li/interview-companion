@@ -1,6 +1,8 @@
 window.onload = () => {
 // Fetch and inject HTML
 
+const HTTP = "http://localhost:8000/chat";
+
 fetch(chrome.runtime.getURL('client/client.html'))
     .then(r => r.text())
     .then(html => {
@@ -24,21 +26,36 @@ fetch(chrome.runtime.getURL('client/client.css'))
     });
 console.log('Injected HTML content into the active tab.');
 
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    if (request.action === 'getElementByjsname') {
+        const element = document.querySelector(`[jsname="${request.jsName}"]`);
+        if (element) {
+            const clientBody = document.getElementById('bodyText');
+            if (clientBody) {
+                clientBody.innerHTML += "<br><strong>"+element.textContent+"</strong>";
+                clientBody.scrollTop = clientBody.scrollHeight;
 
-    chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-        if (request.action === 'getElementByjsname') {
-            const element = document.querySelector(`[jsname="${request.jsName}"]`);
-            if (element) {
-                const clientBody = document.getElementById('bodyText');
-                if (clientBody) {
-                    clientBody.innerHTML += "<br><strong>"+element.textContent+"</strong>";
-                    clientBody.scrollTop = clientBody.scrollHeight;
+                console.log('hi');
 
-                    console.log('hi');
-                }
+                    // Send a POST request to the localhost address
+                fetch(HTTP, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        text: element.textContent
+                    })
+                })
+                .then(response => response.json())
+                .then(data => console.log("Request", data.text))
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
             }
-            console.log(element.textContent);
         }
-    });
+        console.log(element.textContent);
+    }
+});
     
 }
