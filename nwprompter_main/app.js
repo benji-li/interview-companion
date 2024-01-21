@@ -8,7 +8,6 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const chatRouter = require('./routes/chat');
-const testRouter = require('./routes/test');
 const app = express();
 
 // view engine setup
@@ -27,7 +26,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/chat', chatRouter);
-app.use('/message', testRouter)
 
 
 

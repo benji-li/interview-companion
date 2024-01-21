@@ -1,0 +1,178 @@
+.modal-box {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); /* Add box shadow */
+
+  }
+  
+  .modal-box .header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+    background-color: transparent;
+  }
+  
+  .modal-box .icon-modal-view {
+    position: relative;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .modal-box .text-wrapper {
+    flex: 1;
+    font-family: "Open Sans-Bold", Helvetica;
+    font-weight: 700;
+    font-size: 16px;
+    position: relative;
+    color: #333333;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .modal-box .icon-modal-close {
+    position: relative;
+    width: 24px;
+    height: 24px;
+  }
+
+  
+  .modal-box .main-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    max-height:200px;
+    overflow-y: auto;
+    flex: 0 0 auto;
+  }
+  
+  .modal-box .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    position: relative;
+    flex: 1;
+    flex-grow: 1;
+  }
+  
+  .modal-box .div {
+    align-self: stretch;
+    margin-top: -1px;
+    font-family: "Open Sans-Regular", Helvetica;
+    font-weight: 400;
+    font-size: 15px;
+    position: relative;
+    color: #333333;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .modal-box .unsplash {
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 181px;
+  }
+  
+  .modal-box .p {
+    position: relative;
+    align-self: stretch;
+    font-family: "Open Sans-Regular", Helvetica;
+    font-weight: 400;
+    color: #333333;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .modal-box .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+    background-color: transparent;
+  }
+  
+  .modal-box .button {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 8px;
+    position: relative;
+    flex: 0 0 auto;
+    background-color: #ffffff;
+  }
+  
+  .modal-box .button-wrapper {
+    all: unset;
+    box-sizing: border-box;
+    display: inline-flex;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 16px;
+    position: relative;
+    flex: 0 0 auto;
+    border-radius: 42px;
+  }
+  
+  .modal-box .button-2 {
+    all: unset;
+    box-sizing: border-box;
+    position: relative;
+    width: fit-content;
+    font-family: "Open Sans-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #888888;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .modal-box .div-wrapper {
+    all: unset;
+    box-sizing: border-box;
+    display: flex; /* Use flexbox layout */
+    height: 42px;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    gap: 6px;
+    padding: 8px 20px;
+    position: relative;
+    flex: 0 0 auto;
+    background-color: #1e81b8;
+    border-radius: 42px;
+}
+  
+  .modal-box .button-3 {
+    all: unset;
+    box-sizing: border-box;
+    position: relative;
+    width: fit-content;
+    font-family: "Open Sans-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+        margin: auto; /* Center the element */
+
+  }

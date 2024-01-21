@@ -1,10 +1,35 @@
 {
     "manifest_version": 3,
-    "name": "Hello Extensions of the world",
-    "description": "Base Level Extension",
+    "name": "Interview Companion",
+    "description": "Make your next interview extra breezy",
     "version": "1.0",
     "action": {
-      "default_popup": "main.html",
-      "default_icon": "hello_extensions.png"
-    }
+      "default_popup": "popup/popup.html",
+      "default_icon": "img/hello_extensions.png"
+    },
+    
+    "permissions": ["scripting", "activeTab","storage","tabs"],
+
+    "background": {
+      "service_worker": "background.js"
+    },
+
+    "content_scripts": [
+      {
+        "js": ["scripts/content.js"],
+        "matches": [
+          "https://meet.google.com/*",
+          "https://zoom.us/*",
+          "https://myinstants.com/*"
+        ],
+        "run_at": "document_end"
+      }
+    ],
+
+    "web_accessible_resources": [
+      {
+        "resources": ["popup/popup.html", "popup/popup.css","img/divider.svg","img/unsplash-5ziaatxttok.png","icon-modal-close-2.svg","icon-modal-view-2.svg"],
+        "matches": ["<all_urls>"]
+      }
+    ]
 }
