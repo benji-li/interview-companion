@@ -49,10 +49,13 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                         text: element.textContent
                     })
                 })
+                .then(
+                    clientBody.innerHTML = element.textContent+"<br><br><strong>"+ clientBody.innerHTML
+                )
                 .then(response => response.json())
                 .then(data => {
                     console.log("Request", data.text)
-                    clientBody.innerHTML = "<br><br><strong>"+data.text+"</strong>" + clientBody.innerHTML;
+                    clientBody.innerHTML = element.textContent+"<br><br><strong>"+data.text+"</strong><br><br>"+ clientBody.innerHTML;
                     clientBody.scrollTop = clientBody.scrollHeight;
                     title.innerHTML = "🤓 Interview Buddy";
                 })
