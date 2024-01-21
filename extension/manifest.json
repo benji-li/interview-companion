@@ -4,7 +4,7 @@
     "description": "Make your next interview extra breezy",
     "version": "1.0",
     "action": {
-      "default_popup": "home/home.html",
+      "default_popup": "popup/popup.html",
       "default_icon": "img/hello_extensions.png"
     },
     
