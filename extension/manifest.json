@@ -4,21 +4,29 @@
     "description": "Make your next interview extra breezy",
     "version": "1.0",
     "action": {
-      "default_icon": "images/hello_extensions.png"
+      "default_icon": "img/hello_extensions.png"
     },
-    "permissions": ["scripting", "activeTab"],
+    
+    "permissions": ["scripting", "activeTab","storage"],
 
     "background": {
       "service_worker": "background.js"
     },
-    
+
     "content_scripts": [
       {
         "js": ["scripts/content.js"],
         "matches": [
-          "https://developer.chrome.com/docs/extensions/*",
-          "https://developer.chrome.com/docs/webstore/*"
+          "https://meet.google.com/*",
+          "https://zoom.us/*"
         ]
+      }
+    ],
+
+    "web_accessible_resources": [
+      {
+        "resources": ["popup/popup.html", "popup/popup.css","img/divider.svg","img/unsplash-5ziaatxttok.png","icon-modal-close-2.svg","icon-modal-view-2.svg"],
+        "matches": ["<all_urls>"]
       }
     ]
 }

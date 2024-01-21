@@ -1,36 +1,61 @@
-//add a floating rectangle that says "yeer"
-const badge = document.createElement('p');
-badge.classList.add('color-secondary-text', 'type--caption');
-badge.textContent = `⏱️ yeer`;
-// make it float in the middle of the page
-badge.style.position = "fixed";
-badge.style.top = "50%";
-badge.style.left = "50%";
-badge.style.transform = "translate(-50%, -50%)";
-document.body.appendChild(badge);
+// Fetch and inject HTML
 
+fetch(chrome.runtime.getURL('popup/popup.html'))
+    .then(r => r.text())
+    .then(html => {
+        // Create a new div and insert the HTML
+        let div = document.createElement('div');
+        div.innerHTML = html;
+        div.style.position = "fixed";
+        div.style.top = "5%";
+        div.style.left = "60%";
+        //div.style.transform = "translate(-50%, -50%)";
+        div.style.zIndex = "1000";
+        document.body.appendChild(div);
+    });
+// Fetch and inject CSS
+fetch(chrome.runtime.getURL('popup/popup.css'))
+    .then(r => r.text())
+    .then(css => {
+        // Create a new style element and insert the CSS
+        let style = document.createElement('style');
+        style.textContent = css;
+        document.head.appendChild(style);
+    });
 
-/*const article = document.querySelector('article');
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.action === 'hideElement') {
+        // Hide the HTML element with a specific ID
+        const elementToHide = document.getElementById(message.elementId);
+        if (elementToHide) {
+        elementToHide.style.display = 'none';
+        }
+    }
+});
 
-// `document.querySelector` may return null if the selector doesn't match anything.
-if (article) {
-  const text = article.textContent;
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the image element by its ID
+    var dynamicImage = document.getElementById('unsplash');
+  
+    // Set the source attribute of the image using chrome.runtime.getURL
+    dynamicImage.src = chrome.runtime.getURL('img/unsplash-5ziaatxttok.png');
+  });
 
-  const wordMatchRegExp = /[^\s]+/g;
-  const words = text.matchAll(wordMatchRegExp);
-  // matchAll returns an iterator, convert to array to get word count
-  const wordCount = [...words].length;
-  const readingTime = Math.round(wordCount / 200);
-  const badge = document.createElement('p');
-  // Use the same styling as the publish information in an article's header
-  badge.classList.add('color-secondary-text', 'type--caption');
-  badge.textContent = `⏱️ yeer`;
+/*
+const htmlToInject = '<div style="background: yellow; padding: 20px;">Injected HTML Content</div>';
 
-  // Support for API reference docs
-  const heading = article.querySelector('h1');
-  // Support for article docs with date
-  const date = article.querySelector('time')?.parentNode;
+// Create a temporary container element
+const container = document.createElement('div');
 
-  // https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentElement
-  (date ?? heading).insertAdjacentElement('afterend', badge);
-}*/
+// Set the container's innerHTML to the HTML string
+container.innerHTML = htmlToInject;
+container.style.position = "fixed";
+container.style.top = "50%";
+container.style.left = "50%";
+container.style.transform = "translate(-50%, -50%)";
+container.style.zIndex = "1000";
+
+// Append the content to the document body
+document.body.appendChild(container);
+*/
+console.log('Injected HTML content into the active tab.');
