@@ -4,11 +4,11 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 const meet = 'https://meet.google.com/';
-const zoom = 'https://zoom.us/';
 
 // When the user clicks on the extension action
 chrome.action.onClicked.addListener(async (tab) => {
-  if (tab.url.startsWith(meet) || tab.url.startsWith(zoom)) {
+  
+  if (tab.url.startsWith(meet)) {
     const prevState = await chrome.action.getBadgeText({ tabId: tab.id });
     const nextState = prevState === 'ON' ? 'OFF' : 'ON';
 

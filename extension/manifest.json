@@ -31,5 +31,15 @@
         "resources": ["client/client.html", "client/client.css","img/divider.svg","img/unsplash-5ziaatxttok.png","icon-modal-close-2.svg","icon-modal-view-2.svg"],
         "matches": ["<all_urls>"]
       }
-    ]
+    ],
+
+    "commands": {
+      "_execute_grab_command": {
+        "suggested_key": {
+          "default": "Ctrl+B",
+          "mac": "Command+B"
+        },
+        "description": "Makes it supes chill for ya"
+      }
+    }
 }

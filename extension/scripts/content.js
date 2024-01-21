@@ -10,8 +10,8 @@ fetch(chrome.runtime.getURL('client/client.html'))
         let div = document.createElement('div');
         div.innerHTML = html;
         div.style.position = "fixed";
-        div.style.top = "8%";
-        div.style.left = "60%";
+        div.style.top = "60%";
+        div.style.left = "18%";
         div.style.zIndex = "1000";
         document.body.appendChild(div);
     });
@@ -32,10 +32,10 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         if (element) {
             const clientBody = document.getElementById('bodyText');
             if (clientBody) {
-                clientBody.innerHTML += "<br><strong>"+element.textContent+"</strong>";
-                clientBody.scrollTop = clientBody.scrollHeight;
+                //clientBody.innerHTML += "<br><strong>"+element.textContent+"</strong>";
+                //clientBody.scrollTop = clientBody.scrollHeight;
 
-                console.log('hi');
+                //console.log('hi');
 
                     // Send a POST request to the localhost address
                 fetch(HTTP, {
@@ -48,11 +48,16 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                     })
                 })
                 .then(response => response.json())
-                .then(data => console.log("Request", data.text))
+                .then(data => {
+                    console.log("Request", data.text)
+                    clientBody.innerHTML += "<br><br><strong>"+data.text+"</strong>";
+                    clientBody.scrollTop = clientBody.scrollHeight;
+                })
                 .catch((error) => {
                     console.error('Error:', error);
                 });
             }
+
         }
         console.log(element.textContent);
     }
