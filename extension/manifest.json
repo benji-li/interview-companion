@@ -28,7 +28,7 @@
 
     "web_accessible_resources": [
       {
-        "resources": ["popup/popup.html", "popup/popup.css","img/divider.svg","img/unsplash-5ziaatxttok.png","icon-modal-close-2.svg","icon-modal-view-2.svg"],
+        "resources": ["client/client.html", "client/client.css","img/divider.svg","img/unsplash-5ziaatxttok.png","icon-modal-close-2.svg","icon-modal-view-2.svg"],
         "matches": ["<all_urls>"]
       }
     ]
