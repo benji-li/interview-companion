@@ -71,11 +71,13 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
         grab.addEventListener("click", (event) => {
             const element = document.querySelector(`[jsname="${"tgaKEf"}"]`);
+            var send = element.textContent + "Limit your response to 3-4 sentences, answer the question as you would in an interview, using examples of past experiences";
+            console.log(send);
             if (element) {
                 const clientBody = document.getElementById('bodyText');
                 if (clientBody) {
                     const title = document.getElementById('title');
-                    title.innerHTML = "🤔 Interview Buddy";
+                    title.innerHTML = "🤔 Premove";
                     //clientBody.innerHTML += "<br><strong>"+element.textContent+"</strong>";
                     //clientBody.scrollTop = clientBody.scrollHeight;
 
@@ -88,18 +90,18 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
-                            text: element.textContent
+                            text: send
                         })
                     })
                     .then(
-                        clientBody.innerHTML = element.textContent+"<br><br><strong>"+ clientBody.innerHTML
+                        clientBody.innerHTML = "<strong>"+element.textContent+"</strong><br><br>"
                     )
                     .then(response => response.json())
                     .then(data => {
                         console.log("Request", data.text)
-                        clientBody.innerHTML = element.textContent+"<br><br><strong>"+data.text+"</strong><br><br>"+ clientBody.innerHTML;
+                        clientBody.innerHTML += data.text;
                         clientBody.scrollTop = clientBody.scrollHeight;
-                        title.innerHTML = "🤓 Interview Buddy";
+                        title.innerHTML = "🤓 Premove";
                     })
                     .catch((error) => {
                         console.error('Error:', error);
@@ -107,44 +109,46 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                 }
 
             }
-            console.log(element.textContent);
         });
     }
     console.log('Injected HTML content into the active tab.');
 });
 
+
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.action === 'getElementByjsname') {
         const element = document.querySelector(`[jsname="${request.jsName}"]`);
+        var send = element.textContent + "Limit your response to 3-4 sentences, answer the question as you would in an interview, using examples of past experiences";
+        console.log(send);
         if (element) {
             const clientBody = document.getElementById('bodyText');
             if (clientBody) {
                 const title = document.getElementById('title');
-                title.innerHTML = "🤔 Interview Buddy";
+                title.innerHTML = "🤔 Premove";
                 //clientBody.innerHTML += "<br><strong>"+element.textContent+"</strong>";
                 //clientBody.scrollTop = clientBody.scrollHeight;
 
                 //console.log('hi');
 
-                    // Send a POST request to the localhost address
+                // Send a POST request to the localhost address
                 fetch(HTTP, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        text: element.textContent
+                        text: send
                     })
                 })
                 .then(
-                    clientBody.innerHTML = element.textContent+"<br><br><strong>"+ clientBody.innerHTML
+                    clientBody.innerHTML = element.textContent+"<br><br>"
                 )
                 .then(response => response.json())
                 .then(data => {
                     console.log("Request", data.text)
-                    clientBody.innerHTML = element.textContent+"<br><br><strong>"+data.text+"</strong><br><br>"+ clientBody.innerHTML;
+                    clientBody.innerHTML = element.textContent+"<br><br><strong>"+data.text+"</strong>";
                     clientBody.scrollTop = clientBody.scrollHeight;
-                    title.innerHTML = "🤓 Interview Buddy";
+                    title.innerHTML = "🤓 Premove";
                 })
                 .catch((error) => {
                     console.error('Error:', error);
