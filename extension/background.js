@@ -1,13 +1,13 @@
 // background.js
 chrome.runtime.onInstalled.addListener(() => {
-  chrome.action.setBadgeText({ text: 'OFF' });
+  chrome.action.setBadgeText({ text: 'ON' });
 });
 
 const meet = 'https://meet.google.com/';
 
 // When the user clicks on the extension action
 chrome.action.onClicked.addListener(async (tab) => {
-  
+
   if (tab.url.startsWith(meet)) {
     const prevState = await chrome.action.getBadgeText({ tabId: tab.id });
     const nextState = prevState === 'ON' ? 'OFF' : 'ON';
